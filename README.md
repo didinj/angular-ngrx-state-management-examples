@@ -1,6 +1,6 @@
 # NgRx Tutorial: State Management in Angular with Real-World Examples
 
-Read the full tutorial [here]().
+Read the full tutorial [here](https://www.djamware.com/post/68b3b169855adc710bcc66fc/ngrx-tutorial-state-management-in-angular-with-realworld-examples).
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.6.
 
