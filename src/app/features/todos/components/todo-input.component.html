@@ -1,0 +1,14 @@
+<form (ngSubmit)="submit()" class="todo-input">
+  <mat-form-field appearance="outline" class="flex-1">
+    <mat-label>Add a new todo</mat-label>
+    <input matInput [formControl]="titleCtrl" placeholder="e.g. Write NgRx tutorial" />
+    <mat-error *ngIf="titleCtrl.invalid && (titleCtrl.dirty || titleCtrl.touched)">
+      Title is required (min 3).
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" type="submit" [disabled]="titleCtrl.invalid">
+    <mat-icon>add</mat-icon>
+    Add
+  </button>
+</form>

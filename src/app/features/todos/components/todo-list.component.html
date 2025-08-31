@@ -1,0 +1,51 @@
+<ng-container *ngIf="loading$ | async">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-container>
+<div class="counts" *ngIf="counts$ | async as c">
+  <strong>Total:</strong> {{ c.total }} • <strong>Active:</strong> {{ c.active }} •
+  <strong>Completed:</strong> {{ c.completed }}
+</div>
+
+<h3>Active</h3>
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let t of active$ | async">
+    <mat-checkbox
+      (change)="toggle(t.id)"
+      [checked]="t.done"
+      [disableRipple]="true"
+      matTooltip="Mark done"
+    ></mat-checkbox>
+
+    <div class="title">
+      {{ t.title }}
+      <div class="sub">Created {{ t.createdAt | date : 'short' }}</div>
+    </div>
+
+    <button mat-icon-button color="warn" aria-label="Delete" (click)="remove(t.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
+
+<mat-divider></mat-divider>
+
+<h3>Completed</h3>
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let t of completed$ | async">
+    <mat-checkbox
+      (change)="toggle(t.id)"
+      [checked]="t.done"
+      [disableRipple]="true"
+      matTooltip="Mark active"
+    ></mat-checkbox>
+
+    <div class="title done">
+      {{ t.title }}
+      <div class="sub">Created {{ t.createdAt | date : 'short' }}</div>
+    </div>
+
+    <button mat-icon-button color="warn" aria-label="Delete" (click)="remove(t.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
